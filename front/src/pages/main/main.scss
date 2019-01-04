@@ -1,0 +1,123 @@
+.main-container {
+  background-color: black;
+  height: 100%;
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: rgb(216, 216, 216);
+  font-family: 'Space Mono', monospace;
+}
+
+.dash-body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  text-align: center;
+}
+
+.user-playlists {
+  padding: 10px;
+  font-size: 3vmin;
+  width: 50%;
+  margin: 8px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-trending {
+  padding: 10px;
+  font-size: 3vmin;
+  width: 50%;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-playlist {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  margin-top: 1vmin;
+  margin-bottom: 1vmin;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: rgb(216, 216, 216);
+  font-weight: 800;
+  border: solid 2px transparent;
+}
+
+.user-playlist:hover {
+  border: solid 2px rgb(216, 216, 216);
+}
+
+.playlist-name {
+  padding: 2px;
+  text-align: center;
+  font-size: 2vmin;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.playlist-sub-name {
+  text-align: center;
+  font-size: 2vmin;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.playlist-photo {
+  border-radius: 30vmin;
+  height: 8vmin;
+  width: 8vmin;
+  margin: 1vmin;
+  border: solid 2px white;
+}
+
+.user-time {
+  font-size: 3vmin;
+  width: 100%;
+  padding-right: 2vmin;
+  text-align: right;
+  color: white;
+}
+
+.dash-title {
+  width: 100%;
+  height: 7%;
+  color: rgb(216, 216, 216);
+  padding-top: 15px;
+  padding-left: 10px;
+  font-size: 4vmin;
+  display: flex;
+  align-items: center;
+}
+
+.user-top-artists {
+  font-size: 2vmin;
+  text-align: center;
+  flex: 4;
+  overflow-y: scroll;
+  background-color: rgb(24, 24, 24);
+  border: solid 2px rgb(40, 40, 40);
+}
+
+.user-top-tracks {
+  font-size: 2vmin;
+  text-align: center;
+  flex: 4;
+  overflow-y: scroll;
+  background-color: rgb(24, 24, 24);
+  border: solid 2px rgb(40, 40, 40);
+}
+
+.top-title {
+  width: 100%;
+  text-align: left;
+  font-size: 2vmin;
+}

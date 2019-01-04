@@ -1,0 +1,96 @@
+.create-container {
+  background-color: black;
+  height: 100%;
+  flex: 9;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgb(216, 216, 216);
+  font-family: 'Space Mono', monospace;
+}
+
+.create-body {
+  flex: 1;
+  width: 100%;
+  padding: 1vmin;
+  font-size: 2.5vmin;
+  background-color: black; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-gen {
+  flex: 1;
+  height: 100%;
+  border-left: solid 1px white;
+  padding: 1vmin;
+}
+
+.create-title {
+  font-weight: 700;
+  font-size: 5vmin;
+  padding: 40px;
+}
+
+.input-box {
+  margin: 2vmin;
+  height: 5%;
+  width: 50%;
+  font-size: 2vmin;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name-input {
+  border-radius: 0.5vmin;
+  font-family: 'Space Mono', monospace;
+}
+
+.desc-input {
+  border-radius: 0.5vmin;
+  font-family: 'Space Mono', monospace;
+}
+
+.input-row-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  margin: 2vmin;
+}
+
+.label-toggles {
+  color: white;
+  font-size: 1.5vmin;
+  margin-right: 2vmin;
+}
+
+.create-options {
+  padding: 1vmin;
+  display: flex;
+  flex-direction: row;
+  font-size: 2vmin;
+  justify-content: space-between;
+}
+
+.create-option {
+  flex: 1;
+  display: flex;
+  padding: 1.5vmin;
+  border: solid 1px white;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5vmin;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.create-option:hover {
+  background: white;
+  color: black;
+}

@@ -1,0 +1,53 @@
+.user-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  background: black;
+  border-right: solid 2px rgb(40, 40, 40);
+  font-family: 'Space Mono', monospace;
+}
+
+.user-info {
+  flex: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.user-name {
+  background-color: rgba(0,0,0,0.5);
+  flex: 1;
+  font-size: calc(1px + 0.8em);
+  text-align: center;
+  color: rgb(216, 216, 216);
+}
+
+.user-choices {
+  flex: 15;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.user-choice {
+  flex: 1;
+  font-size: 2vmin;
+  padding: 15px;
+  background: black;
+  text-align: center;
+  color: rgb(216, 216, 216);;
+  border-top: solid 1px rgb(40, 40, 40);
+  border-bottom: solid 1px rgb(40, 40, 40);
+  transition: background 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-choice:hover {
+  background: #fffe;
+  color: black;
+  border: solid 1px black;
+}

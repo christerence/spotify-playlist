@@ -1,0 +1,84 @@
+.list-container {
+  width: 100%;
+  height: 5%;
+  color: rgb(231, 231, 231);
+  border-bottom: solid 1px rgb(40, 40, 40);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.list-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  font-size: 2vmin;
+}
+
+.list-container-small {
+  width: 100%;
+  height: 5%;
+  color: rgb(231, 231, 231);
+  border-bottom: solid 1px rgb(40, 40, 40);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-section-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  font-size: 1.8vmin;
+}
+
+
+.selectable-list-container-small {
+  width: 100%;
+  height: 5%;
+  color: rgb(231, 231, 231);
+  border-bottom: solid 1px rgb(40, 40, 40);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.selectable-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 6;
+  height: 100%;
+  text-align: center;
+  font-size: 1.8vmin;
+}
+
+.selectable-artist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 3;
+  height: 100%;
+  text-align: center;
+  font-size: 1.8vmin;
+}
+
+.selectable-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  font-size: 1.8vmin;
+}
+
