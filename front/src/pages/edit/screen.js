@@ -11,7 +11,7 @@ import {
 } from "../../reducers/spotify";
 import { SortableContainer, arrayMove } from "react-sortable-hoc";
 import { SortableItem, ListItemSmall, SelectableListItemSmall } from "../../components";
-import { find, hasIn, remove, countBy } from "lodash";
+import { find, hasIn, remove, countBy, take } from "lodash";
 import { Radar } from "react-chartjs";
 import "./edit.scss";
 
@@ -46,10 +46,17 @@ class Edit extends React.Component {
     deleteState: false,
     addState: false,
     statsState: false,
-    artists: []
+    artists: [],
+    isDesktop: false,
   };
+  
+  updatePredicate = () => {
+    this.setState({ isDesktop: window.innerWidth > 600 });
+  }
 
   componentDidMount() {
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
     const id = this.props.match.params.id;
     this.props.fetchPlaylistsTracks(id);
     if (this.props.savedTracks.length === 0) {
@@ -59,6 +66,7 @@ class Edit extends React.Component {
 
   componentWillUnmount() {
     this.props.emptyPlayListTracks();
+    window.removeEventListener("resize", this.updatePredicate);
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -162,9 +170,10 @@ class Edit extends React.Component {
   };
 
   renderTable = () => {
-    const { artists } = this.state;
+    const { artists, isDesktop } = this.state;
     const genres = [];
-    artists.forEach(val => {
+    const barred = take(artists, 20);
+    barred.forEach(val => {
       val.genres.forEach(genre => {
         genres.push(genre);
       });
@@ -210,7 +219,7 @@ class Edit extends React.Component {
 
     return (
       <div className="graph-body">
-        <Radar data={data} options={options} width="600" height="600" />
+        <Radar data={data} options={options} width={isDesktop ? "600": "400"} height={isDesktop ? "600": "400"} />
       </div>
     );
   };

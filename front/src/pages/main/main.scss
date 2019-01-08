@@ -121,3 +121,30 @@
   text-align: left;
   font-size: 2vmin;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .dash-title {
+    height: 4%;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 4vmin;
+  }
+
+  .user-playlists {
+    padding: 5px;
+    font-size: 3vmin;
+    height: 95%;
+    width: 50%;
+    margin: 4px;
+    margin-top: 0px;
+  }
+
+  .user-trending {
+    padding: 5px;
+    font-size: 3vmin;
+    height: 93.5%;
+    width: 50%;
+    margin: 4px;
+  }
+}
