@@ -99,5 +99,9 @@
   justify-content: center;
 }
 
-
-
+@media only screen and (max-width: 600px) {
+  .edit-title {
+    flex: 4;
+    font-size: 3vmin;
+  }
+}

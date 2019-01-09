@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { actions } from "../auth";
 import { checkLoginState, logout } from "../../api/spotify";
-import { isEmpty, hasIn } from "lodash";
+import { isEmpty } from "lodash";
 
 
 export const fetchUserAction = function*(action) {

@@ -84,6 +84,14 @@ const addPlaylistTracks = (playlist_id, added) => {
   });
 }
 
+const getTopArtistsTracks = (ids) => {
+  return axios.get("/spotify/artists/top", {
+    params: {
+      ids: ids
+    }
+  })
+}
+
 
 export {
   checkLoginState,
@@ -97,5 +105,6 @@ export {
   deleteTracks,
   createPlaylist,
   fetchSavedTracks,
-  addPlaylistTracks
+  addPlaylistTracks,
+  getTopArtistsTracks
 };

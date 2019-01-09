@@ -1,4 +1,5 @@
 const axios = require("axios");
+const _ = require("lodash");
 
 const spotify_url = "https://api.spotify.com/v1/";
 
@@ -9,12 +10,12 @@ module.exports = app => {
         method: "get",
         url: `${spotify_url}me/playlists`,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       res.send({ playlists: result.data, success: true });
     } catch (err) {
-      res.send({ error: err.message, success: false});
+      res.send({ error: err.message, success: false });
     }
   });
 
@@ -24,12 +25,12 @@ module.exports = app => {
         method: "delete",
         url: `${spotify_url}playlists/${req.query.id}/followers`,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       res.send({ success: true });
     } catch (err) {
-      res.send({  success: false });
+      res.send({ success: false });
     }
   });
 
@@ -39,32 +40,29 @@ module.exports = app => {
         method: "get",
         url: `${spotify_url}playlists/${req.query.id}/tracks`,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       var total = result.data.total;
       var items = result.data.items;
       var count = 100;
-      while(count < total) {
+      while (count < total) {
         let interim = await axios({
           method: "get",
           url: `${spotify_url}playlists/${req.query.id}/tracks`,
           params: {
-            offset: count,
+            offset: count
           },
           headers: {
-            Authorization: 'Bearer ' + req.user.token
+            Authorization: "Bearer " + req.user.token
           }
         });
-        items = [
-          ...items, 
-          ...interim.data.items
-        ]
+        items = [...items, ...interim.data.items];
         count += 100;
       }
       res.send({ data: items, total: result.data.total, success: false });
     } catch (err) {
-      res.send({  err: err.message, success: false });
+      res.send({ err: err.message, success: false });
     }
   });
 
@@ -74,15 +72,18 @@ module.exports = app => {
         method: "get",
         url: `${spotify_url}me/top/tracks`,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
-      res.send({ data: result.data.items, total: result.data.total, success: true });
+      res.send({
+        data: result.data.items,
+        total: result.data.total,
+        success: true
+      });
     } catch (err) {
-      res.send({  err: err.message, success: false });
+      res.send({ err: err.message, success: false });
     }
   });
-
 
   app.get("/spotify/stats/artists", async (req, res) => {
     try {
@@ -90,12 +91,16 @@ module.exports = app => {
         method: "get",
         url: `${spotify_url}me/top/artists`,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
-      res.send({ data: result.data.items, total: result.data.total, success: true });
+      res.send({
+        data: result.data.items,
+        total: result.data.total,
+        success: true
+      });
     } catch (err) {
-      res.send({  err: err.message, success: false });
+      res.send({ err: err.message, success: false });
     }
   });
 
@@ -106,12 +111,12 @@ module.exports = app => {
         url: `${spotify_url}playlists/${req.query.id}/tracks`,
         data: req.query.ranges,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       res.send({ success: true });
     } catch (err) {
-      res.send({  err: err.message });
+      res.send({ err: err.message });
     }
   });
 
@@ -122,12 +127,12 @@ module.exports = app => {
         url: `${spotify_url}playlists/${req.query.id}/tracks`,
         data: req.query.deleted,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       res.send({ success: true });
     } catch (err) {
-      res.send({  success: false });
+      res.send({ success: false });
     }
   });
 
@@ -138,7 +143,7 @@ module.exports = app => {
         url: `${spotify_url}users/${req.query.id}/playlists`,
         data: req.query.meta,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       res.send({ result: result.data, success: true });
@@ -156,29 +161,26 @@ module.exports = app => {
           limit: req.query.limit
         },
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
 
       var total = result.data.total;
       var items = result.data.items;
       var count = 50;
-      while(count < total) {
+      while (count < total) {
         let interim = await axios({
           method: "get",
           url: `${spotify_url}me/tracks`,
           params: {
             limit: req.query.limit,
-            offset: count,
+            offset: count
           },
           headers: {
-            Authorization: 'Bearer ' + req.user.token
+            Authorization: "Bearer " + req.user.token
           }
         });
-        items = [
-          ...items, 
-          ...interim.data.items
-        ]
+        items = [...items, ...interim.data.items];
         count += 50;
       }
       res.send({ result: items, success: true });
@@ -194,7 +196,7 @@ module.exports = app => {
         url: `${spotify_url}playlists/${req.query.id}/tracks`,
         data: req.query.uris,
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       res.send({ result: result.data, success: true });
@@ -202,7 +204,6 @@ module.exports = app => {
       res.send({ err: err.message, success: false });
     }
   });
-
 
   app.get("/spotify/artists", async (req, res) => {
     try {
@@ -213,13 +214,38 @@ module.exports = app => {
           ids: req.query.ids.join()
         },
         headers: {
-          Authorization: 'Bearer ' + req.user.token
+          Authorization: "Bearer " + req.user.token
         }
       });
       res.send({ result: result.data, success: true });
     } catch (err) {
       res.send({ err: err.message, success: false });
     }
-  })
+  });
 
+  app.get("/spotify/artists/top", async (req, res) => {
+    const ids = _.take(_.shuffle(req.query.ids), 5);
+    try {
+      const result = [];
+      let i = 0;
+      while (i < ids.length) {
+        const intermediate = await axios({
+          method: "get",
+          url: `${spotify_url}artists/${ids[i]}/top-tracks`,
+          params: {
+            market: "US"
+          },
+          headers: {
+            Authorization: "Bearer " + req.user.token
+          }
+        });
+        result.push(intermediate.data);
+        i++;
+      }
+      res.send({ result: result, success: true });
+    } catch (err) {
+      console.log(err);
+      res.send({ err: err.message, success: false });
+    }
+  });
 };

@@ -88,7 +88,6 @@ class App extends Component {
   render() {
     const { isDesktop, logoutAction } = this.state;
     const { user } = this.props.auth;
-    const { logoutCall } = this.props;
     return (
       <React.Fragment>
         {!isEmpty(user) && (

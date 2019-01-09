@@ -11,7 +11,7 @@ import {
 } from "../../reducers/spotify";
 import { SortableContainer, arrayMove } from "react-sortable-hoc";
 import { SortableItem, ListItemSmall, SelectableListItemSmall } from "../../components";
-import { find, hasIn, remove, countBy, take } from "lodash";
+import { find, remove, countBy, take } from "lodash";
 import { Radar } from "react-chartjs";
 
 import "./edit.scss";

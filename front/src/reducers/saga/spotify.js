@@ -10,10 +10,11 @@ import {
   deletePlaylist,
   createPlaylist,
   fetchSavedTracks,
-  addPlaylistTracks
+  addPlaylistTracks,
+  getTopArtistsTracks
 } from "../../api/spotify";
 import { filter, find, remove, shuffle, take } from "lodash";
-import { getUser, getSavedTracks } from "./selector";
+import { getUser, getSavedTracks, getStats } from "./selector";
 
 export const fetchPlaylistsAction = function*(action) {
   const result = yield call(fetchPlaylists);
@@ -119,19 +120,48 @@ export const addPlaylistTracksAction = function*(action) {
 
 export const generateAction = function*(action) {
   const user = yield select(getUser);
-  let saved = yield select(getSavedTracks);
-
   const id = user.data.spotID;
-  if (saved.length === 0) {
-    const savedCall = yield call(fetchSavedTracks);
-    if (savedCall.data.success) {
-      yield put({
-        type: actions.setSavedTracks,
-        payload: savedCall.data.result
+  let uris;
+
+  switch (action.payload) {
+    case "Saved Songs":
+      let saved = yield select(getSavedTracks);
+      if (saved.length === 0) {
+        const savedCall = yield call(fetchSavedTracks);
+        if (savedCall.data.success) {
+          yield put({
+            type: actions.setSavedTracks,
+            payload: savedCall.data.result
+          });
+        }
+        saved = savedCall.data.result;
+      }
+      saved = take(shuffle(saved), 20);
+      uris = saved.map(val => {
+        return val.track.uri;
       });
-    }
-    saved = savedCall.data.result;
+      break;
+    case "Top Artists":
+      const stats = yield select(getStats);
+      const artistIDS = stats.artists.map((val)=> {
+        return val.id;
+      })
+      const tracksReq = yield call(getTopArtistsTracks, artistIDS);
+      if(tracksReq.data.success) {
+        let tracks = []
+        tracksReq.data.result.forEach(val => {
+          tracks = [...tracks, ...val.tracks];
+        })
+        tracks = take(shuffle(tracks), 20);
+        uris = tracks.map(val => {
+          return val.uri;
+        });
+      }
+      break;
+    default: 
+      break;
   }
+
   const nameList = [
     "cryptic lake",
     "i guess so",
@@ -157,12 +187,9 @@ export const generateAction = function*(action) {
     yield put({ type: actions.addPlaylist, payload: result.data.result });
   }
   const playlist_id = result.data.result.id;
-  saved = take(shuffle(saved), 20);
-  const uris = saved.map(val => {
-    return val.track.uri;
-  });
+  uris = shuffle(uris)
   yield call(addPlaylistTracks, playlist_id, {
-    uris: uris,
+    uris: uris
   });
 };
 

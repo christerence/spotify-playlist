@@ -16,5 +16,6 @@ module.exports = function(app) {
   app.use(proxy("/spotify/playlists/delete/tracks", { target: "http://localhost:5000/" }));
   app.use(proxy("/spotify/playlists/add/tracks", { target: "http://localhost:5000/" }));
   app.use(proxy("/spotify/artists", { target: "http://localhost:5000/" }));
+  app.use(proxy("/spotify/artists/top", { target: "http://localhost:5000/" }));
 };
 

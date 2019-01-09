@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./create.scss";
-import { Link } from "react-router-dom";
 import { createPlaylist, generate } from "../../reducers/spotify";
 import history from "../../history";
 import { Modal } from "../../components";
+const GenOptions = ["Saved Songs", "Top Artists"];
 
 class Create extends React.Component {
   state = {
@@ -46,7 +46,7 @@ class Create extends React.Component {
   };
 
   onCreate = () => {
-    if (this.state.name.length != 0) {
+    if (this.state.name.length !== 0) {
       this.setState({
         showAlertCreate: true
       });
@@ -54,7 +54,7 @@ class Create extends React.Component {
   };
 
   onSubmit = () => {
-    if (this.state.name.length != 0) {
+    if (this.state.name.length !== 0) {
       this.props.createPlaylist({
         id: this.props.user.data.spotID,
         meta: {
@@ -164,10 +164,18 @@ class Create extends React.Component {
           <div className="create-gen">
             <div className="create-title">Generator:</div>
             <div className="user-choices">
-              {/* <div className="user-choice">SAD BOI</div> */}
-              <div className="user-choice" onClick={generate}>
-                Saved Tracks
-              </div>
+              {GenOptions.map((val, idx) => (
+                <div
+                  className="user-choice"
+                  key={idx}
+                  onClick={() => {
+                    generate(val);
+                    history.push('/playlists')
+                  }}
+                >
+                  {val}
+                </div>
+              ))}
             </div>
           </div>
         </div>
