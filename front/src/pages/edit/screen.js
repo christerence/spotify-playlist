@@ -13,6 +13,7 @@ import { SortableContainer, arrayMove } from "react-sortable-hoc";
 import { SortableItem, ListItemSmall, SelectableListItemSmall } from "../../components";
 import { find, hasIn, remove, countBy, take } from "lodash";
 import { Radar } from "react-chartjs";
+
 import "./edit.scss";
 
 import axios from "axios";
@@ -190,31 +191,7 @@ class Edit extends React.Component {
     };
 
     const options = {
-      legend: {
-        position: "top"
-      },
-      title: {
-        display: true,
-        text: "Chart.js Radar Chart"
-      },
-      scale: {
-        reverse: false,
-        gridLines: {
-          color: [
-            "black",
-            "red",
-            "orange",
-            "yellow",
-            "green",
-            "blue",
-            "indigo",
-            "violet"
-          ]
-        },
-        ticks: {
-          beginAtZero: true
-        }
-      }
+      
     };
 
     return (
@@ -266,7 +243,7 @@ class Edit extends React.Component {
               </div>
             </div>
           )}
-          {!deleteState && !addState && (
+          {!statsState && !deleteState && !addState && (
             <div className="edit-options">
               <div className="edit-option" onClick={this.toggleAdd}>
                 Add
