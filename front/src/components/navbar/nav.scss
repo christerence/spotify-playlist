@@ -1,7 +1,7 @@
 .nav-container.h {
   position: absolute;
   bottom: 0;
-  height: 5vmin;
+  height: 8vmin;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -29,9 +29,9 @@
     "Lucida Sans", Arial, sans-serif;
   font-size: 11;
   text-align: center;
-  border: solid 1px #bfbfbf;
+  border: solid 0.5px #bfbfbf;
   height: 100%;
-  color: grey;
+  color: white;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.5s ease;
@@ -40,7 +40,7 @@
 }
 
 .nav-item:hover {
-  color: white;
+  color: grey;
 }
 
 .nav-item:active {

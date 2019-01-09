@@ -101,15 +101,22 @@
     font-size: 4vmin;
   }
 
+  .create-container {
+    flex-direction: column;
+  }
 
-.input-box {
-  height: 5%;
-  width: 100%;
-  font-size: 3vmin;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
+  .create-gen {
+    border-top: solid 1px white;
+    border-left: solid 0px white;
+  }
 
+  .input-box {
+    height: 5%;
+    width: 100%;
+    font-size: 3vmin;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

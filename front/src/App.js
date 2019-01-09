@@ -21,9 +21,8 @@ function isEmpty(obj) {
 
 const paths = [
   { name: "Dashboard", link: "/" },
-  { name: "PlayLists", link: "/playlists" },
   { name: "Create", link: "/create" },
-  { name: "Coming Soon", link: "/" },
+  { name: "PlayLists", link: "/playlists" },
   { name: "Sign Out", logout: true }
 ];
 
@@ -57,16 +56,15 @@ class App extends Component {
 
   onDismiss = () => {
     this.setState({
-      logoutAction: false,
-    })
-  }
+      logoutAction: false
+    });
+  };
 
   onLogoutCall = () => {
     this.setState({
-      logoutAction: true,
-    })
-
-  }
+      logoutAction: true
+    });
+  };
 
   actions = (
     <React.Fragment>
@@ -74,7 +72,7 @@ class App extends Component {
         className="ui button negative"
         onClick={() => {
           this.setState({
-            logoutAction: false,
+            logoutAction: false
           });
           this.props.logoutCall();
         }}
@@ -87,8 +85,6 @@ class App extends Component {
     </React.Fragment>
   );
 
-
-
   render() {
     const { isDesktop, logoutAction } = this.state;
     const { user } = this.props.auth;
@@ -99,7 +95,9 @@ class App extends Component {
           <Router history={history}>
             <div className="container">
               {isDesktop && <SideBar user={user} logout={this.onLogoutCall} />}
-              {!isDesktop && <NavBar paths={paths} logout={this.onLogoutCall} />}
+              {!isDesktop && (
+                <NavBar paths={paths} logout={this.onLogoutCall} />
+              )}
               <Route path="/" exact component={Main} />
               <Route path="/playlists" exact component={PlayLists} />
               <Route path="/edit/:id" exact component={Edit} />
