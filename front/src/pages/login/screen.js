@@ -7,7 +7,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login-container">
-        <div className="login-box">
+        {/* <div className="login-box">
           <div className="login-text login-header">Spotify Gen</div>
           <a href={"/auth/spotify"}>
             <div className="ui fluid large green submit button">
@@ -18,7 +18,13 @@ class Login extends React.Component {
           <div className="login-sub-header">
             curated playlist generator
           </div>
-        </div>
+        </div> */}
+        <a href={"/auth/spotify"} style={{margin: '20vmin'}}>
+          <div className="ui fluid large green submit button">
+            <i className="spotify medium icon" />
+            Connect with Spotify
+          </div>
+        </a>
       </div>
     );
   }
