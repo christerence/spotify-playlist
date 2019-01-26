@@ -1,6 +1,9 @@
 .login-container {
   flex: 1;
-  background: url('../../assets/managerbg.jpg') center;
+  background-image: url('../../assets/managerbg.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
   height: 100%;
   display: flex;
   align-items: flex-end;
