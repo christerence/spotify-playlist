@@ -1,5 +1,5 @@
 .create-container {
-  background-color: black;
+  background-color: white;
   height: 100%;
   flex: 9;
   display: flex;
@@ -14,7 +14,7 @@
   width: 100%;
   padding: 1vmin;
   font-size: 2.5vmin;
-  background-color: black;
+  background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,17 +26,24 @@
   height: 100%;
   border-left: solid 1px white;
   padding: 1vmin;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .create-title {
+  width: 100%;
+  text-align: left;
+  color: black;
   font-weight: 700;
-  font-size: 5vmin;
-  padding: 40px;
+  font-size: 40px;
+  letter-spacing: 4px;
+  padding: 20px;
 }
 
 .input-box {
-  margin: 2vmin;
-  height: 5%;
+  margin: 20px;
+  height: 10%;
   width: 50%;
   font-size: 2vmin;
   display: flex;
@@ -45,14 +52,20 @@
   justify-content: space-between;
 }
 
+.input-box label {
+  color: black;
+}
+
 .name-input {
   border-radius: 0.5vmin;
   font-family: "Space Mono", monospace;
+
 }
 
 .desc-input {
   border-radius: 0.5vmin;
   font-family: "Space Mono", monospace;
+  color: black;
 }
 
 .input-row-box {
@@ -94,6 +107,37 @@
   background: white;
   color: black;
 }
+
+.gen-choices {
+  height: 45%;
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.gen-choice {
+  flex: 1;
+  font-size: 16px;
+  padding: 5px;
+  background: black;
+  text-align: center;
+  color: rgb(216, 216, 216);;
+  border-top: solid 1px rgb(40, 40, 40);
+  border-bottom: solid 1px rgb(40, 40, 40);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+}
+
+.gen-choice:hover {
+  background: #fffe;
+  color: black;
+  border: solid 1px black;
+}
+
 
 @media only screen and (max-width: 600px) {
   .create-title {

@@ -99,7 +99,7 @@ class Create extends React.Component {
     return (
       <React.Fragment>
         <div className="create-container">
-          <div className="create-body">
+          {/* <div className="create-body">
             <div className="create-title">Create a PlayList:</div>
             <div className="input-box">
               <label>Name: </label>
@@ -157,20 +157,40 @@ class Create extends React.Component {
               <Link className="create-option" to="/playlists">
                 cancel
               </Link>
-            </div> */}
+            </div> 
             </div>
-          </div>
+          </div> */}
 
           <div className="create-gen">
             <div className="create-title">Generator:</div>
-            <div className="user-choices">
+            <div className="input-box">
+              <label>Name: </label>
+              <input
+                type="text"
+                className="name-input"
+                value={name}
+                placeholder="Playlist Name"
+                onChange={this.changeName}
+              />
+            </div>
+            <div className="input-box">
+              <label>Description: </label>
+              <input
+                type="text"
+                className="desc-input"
+                value={description}
+                placeholder="Description"
+                onChange={this.changeDescription}
+              />
+            </div>
+            <div className="gen-choices">
               {GenOptions.map((val, idx) => (
                 <div
-                  className="user-choice"
+                  className="gen-choice"
                   key={idx}
                   onClick={() => {
                     generate(val);
-                    history.push('/playlists')
+                    history.push("/playlists");
                   }}
                 >
                   {val}
