@@ -1,88 +1,67 @@
 .login-container {
   flex: 1;
-  background-image: url('../../assets/managerbg.jpg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.login-box {
-  height: 95%;
-  width: 100%;
-  border-top: solid 1px #bfbfbf;
-  border-bottom: solid 1px #bfbfbf;
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.login-text {
-  padding: 50px;
-  margin: 20px;
-  border-radius: 10px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 5fr 4fr 1fr;
+  grid-template-areas:
+    "header header header"
+    "button button button"
+    "footer footer footer";
 }
 
 .login-header {
-  font-weight: bold;
-  font-size: calc(2px + 5rem);
-  text-align: center;
-  color: rgb(231, 231, 231);
-  background: rgb(24, 24, 24);
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
-.login-sub-header {
-  color: rgb(231, 231, 231);
-  font-weight: 600;
-  font-size: calc(5px + 1vmin);
-  text-align: center;
+.login-header p {
+  text-shadow: 2px 2px rgb(45, 185, 76);
+  color: black;
+  font-size: 64px;
+  letter-spacing: 5px;
   margin: 20px;
+  font-weight: 800;
 }
 
-.login-signup {
-  margin-top: 20px;
-  font-weight: 400;
+.login-button {
+  grid-area: button;
   display: flex;
+  justify-content: center;
   align-items: flex-start;
-  flex-direction: column;
-  width: 100%;
-  font-size: calc(5px + 1vmin);
 }
 
-.login-input {
+.login-spotify{
+  width: 250px;
+  background: rgb(45, 185, 76);
+  border: solid 1px rgb(45, 185, 76);
+  color: white;
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding: 15px;
+  border-radius:200px;
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in 0.2s;
 }
 
-.login-reg {
-  width: 100%;
-  text-align: center;
+.login-spotify:hover {
+  border: solid 1px rgb(45, 185, 76);
+  background: white;
+  color: rgb(45, 185, 76);
 }
 
-.login-form {
-  width: 100%;
+.login-footer {
+  grid-area: footer;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
-@media only screen and (max-width: 600px) {
-  .login-box {
-    height: 100%;
-  }
-
-  .login-header {
-    font-size: calc(2px + 4rem);
-  }
-
-  .login-sub-header {
-    font-size: calc(5px + 2vmin);
-  }
+.login-footer p {
+  margin: 0;
 }
