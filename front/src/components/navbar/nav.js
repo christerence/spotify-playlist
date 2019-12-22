@@ -4,16 +4,16 @@ import "./nav.scss";
 
 const NavBarH = ({ paths, logout }) => (
   <div className="nav-container h">
-    {paths.map(val => {
+    {paths.map((val,key) => {
       if (!val.logout) {
         return (
-          <Link className={`nav-item`} to={val.link}>
+          <Link key={key} className={`nav-item`} to={val.link}>
             {val.name}
           </Link>
         );
       } else {
         return (
-          <div className={`nav-item`} onClick={logout}>
+          <div key={key} className={`nav-item`} onClick={logout}>
             {val.name}
           </div>
         );
@@ -25,9 +25,9 @@ const NavBarH = ({ paths, logout }) => (
 
 const NavBarV = ({ paths }) => (
   <div className="nav-container v">
-    {paths.map(val => {
+    {paths.map((val, key) => {
       return (
-        <Link className={`nav-item`} to={val.link}>
+        <Link key={key} className={`nav-item`} to={val.link}>
           {val.name}
         </Link>
       );
