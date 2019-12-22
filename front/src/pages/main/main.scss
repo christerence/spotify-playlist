@@ -1,12 +1,8 @@
 .main-container {
-  background-color: black;
   height: 100%;
   flex: 9;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  color: rgb(216, 216, 216);
-  font-family: 'Space Mono', monospace;
 }
 
 .dash-body {
@@ -19,18 +15,20 @@
 }
 
 .user-playlists {
+  background: rgb(243, 243, 243);
   padding: 10px;
-  font-size: 3vmin;
+  overflow-y: scroll;
+  font-size: 16px;
+  border-radius: 5px;
   width: 50%;
   margin: 8px;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
 
 .user-trending {
+  background: rgb(243, 243, 243);
   padding: 10px;
-  font-size: 3vmin;
   width: 50%;
   margin: 8px;
   display: flex;
@@ -41,15 +39,12 @@
   flex: 1;
   display: flex;
   width: 100%;
-  margin-top: 1vmin;
-  margin-bottom: 1vmin;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: white;
   color: rgb(216, 216, 216);
-  font-weight: 800;
-  border: solid 2px transparent;
+  border: solid 2px rgba(0, 0, 0, 0.2);
 }
 
 .user-playlist:hover {
@@ -57,11 +52,16 @@
 }
 
 .playlist-name {
-  padding: 2px;
+  height: 100%;
+  width: 100%;
   text-align: center;
-  font-size: 2vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  letter-spacing: 2px;
   color: white;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .playlist-sub-name {
@@ -90,7 +90,6 @@
 .dash-title {
   width: 100%;
   height: 7%;
-  color: rgb(216, 216, 216);
   padding-top: 15px;
   padding-left: 10px;
   font-size: 4vmin;
@@ -119,11 +118,16 @@
 .top-title {
   width: 100%;
   text-align: left;
-  font-size: 2vmin;
+  font-size: 16px;
 }
 
 
 @media only screen and (max-width: 600px) {
+  .dash-body {
+    flex-direction: column;
+    height: 90%;
+  }
+
   .dash-title {
     height: 4%;
     padding-top: 5px;
@@ -135,7 +139,7 @@
     padding: 5px;
     font-size: 3vmin;
     height: 95%;
-    width: 50%;
+    width: 100%;
     margin: 4px;
     margin-top: 0px;
   }
@@ -144,7 +148,7 @@
     padding: 5px;
     font-size: 3vmin;
     height: 93.5%;
-    width: 50%;
+    width: 100%;
     margin: 4px;
   }
 }

@@ -1,27 +1,25 @@
 .user-details {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: black;
-  border-right: solid 2px rgb(40, 40, 40);
-  font-family: 'Space Mono', monospace;
-  width: 200px;
+  flex-direction: row;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .user-info {
-  flex: 5;
+  min-width: 120px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 50px;
 }
 
 .user-name {
-  background: rgba(0,0,0,0.5);
   height: 30px;
   flex: 1;
-  font-size: calc(1px + 0.8em);
+  font-size: 14px;
   text-align: center;
-  color: rgb(216, 216, 216);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,30 +27,27 @@
 }
 
 .user-choices {
-  flex: 15;
-  width: 100%;
   display: flex;
   justify-content: space-evenly;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .user-choice {
-  flex: 1;
-  font-size: 15px;
+  cursor: pointer;
+  margin-right: 50px;
+  font-size: 12px;
+  letter-spacing: 1px;
   padding: 5px;
-  background: black;
   text-align: center;
-  color: rgb(216, 216, 216);
-  border-top: solid 1px rgb(40, 40, 40);
-  border-bottom: solid 1px rgb(40, 40, 40);
+  color: black;
   transition: background 0.5s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: ease-in 0.2s;
 }
 
 .user-choice:hover {
   background: #fffe;
-  color: black;
-  border: solid 1px black;
+  color: rgb(45, 185, 76);
 }

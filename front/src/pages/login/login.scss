@@ -1,5 +1,6 @@
 .login-container {
   flex: 1;
+  height: 100%;
   background: white;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -33,7 +34,7 @@
   align-items: flex-start;
 }
 
-.login-spotify{
+.login-spotify {
   width: 250px;
   background: rgb(45, 185, 76);
   border: solid 1px rgb(45, 185, 76);
@@ -41,7 +42,7 @@
   font-size: 18px;
   letter-spacing: 2px;
   padding: 15px;
-  border-radius:200px;
+  border-radius: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,4 +65,10 @@
 
 .login-footer p {
   margin: 0;
+}
+
+@media only screen and (max-width: 450px) {
+  .login-header p {
+    font-size: 38px;
+  }
 }

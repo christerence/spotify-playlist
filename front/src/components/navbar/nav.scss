@@ -1,13 +1,15 @@
 .nav-container.h {
   position: absolute;
   bottom: 0;
-  height: 8vmin;
-  width: 100%;
+  height: 50px;
+  width: 95%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: rgb(24, 24, 24);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
 .nav-container.v {
@@ -29,7 +31,6 @@
     "Lucida Sans", Arial, sans-serif;
   font-size: 11;
   text-align: center;
-  border: solid 0.5px #bfbfbf;
   height: 100%;
   color: white;
   font-weight: 500;
