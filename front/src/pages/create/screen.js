@@ -162,7 +162,6 @@ class Create extends React.Component {
           </div> */}
 
           <div className="create-gen">
-            <div className="create-title">Generator:</div>
             {/* <div className="input-box">
               <label>Name: </label>
               <input

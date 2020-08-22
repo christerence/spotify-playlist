@@ -22,35 +22,35 @@ class Main extends Component {
       tracks: this.props.spotify.stats.tracks
     };
     return (
-      <div className="main-container">
-        <div className="dash-title">Dashboard:</div>
-        <div className="dash-body">
-          <div className="user-playlists">
+      <div className="Dashboard">
+        <div className="Dashboard-body">
+          <div className="Dashboard-playlists">   
             {playlists &&
               playlists.map((val, key) => {
                 return (
                   <Link
                     key={key}
                     to={`/edit/${val.id}`}
-                    className="user-playlist"
+                    className="Dashboard-playlist"
                     style={{
                       background: val.images[0]
                         ? `url(${val.images[0].url}) center`
                         : "black"
                     }}
                   >
-                    <div className="playlist-name">{val.name}</div>
+                    <div className="Dashboard-playlistName">{val.name}</div>
                   </Link>
                 );
               })}
           </div>
 
-          <div className="user-trending">
-            <div className="top-title">Top Tracks:</div>
-            <div className="user-top-artists">
+          <div className="Dashboard-trending">
+            <div className="Dashboard-title">Your Tracks</div>
+            <div className="Dashboard-topArtists">
               {stats.tracks.map((val, key) => {
                 return (
                   <div
+                    class="Dashboard-topArtist"
                     key={key}
                     style={{
                       background: `url(${val.album.images[1].url}) center`
@@ -61,11 +61,12 @@ class Main extends Component {
                 );
               })}
             </div>
-            <div className="top-title">Top Artists:</div>
-            <div className="user-top-tracks">
+            <div className="Dashboard-title">Your Artists</div>
+            <div className="Dashboard-topTracks">
               {stats.artists.map((val, key) => {
                 return (
                   <div
+                    className="Dashboard-topTrack"
                     key={key}
                     style={{ background: `url(${val.images[0].url}) center` }}
                   >

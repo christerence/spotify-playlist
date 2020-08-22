@@ -30,23 +30,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDesktop: true,
       logoutAction: false
     };
   }
-
-  componentDidMount() {
-    this.updatePredicate();
-    window.addEventListener("resize", this.updatePredicate);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updatePredicate);
-  }
-
-  updatePredicate = () => {
-    this.setState({ isDesktop: window.innerWidth > 600 });
-  };
 
   componentWillMount() {
     if (isEmpty(this.props.auth.user)) {
@@ -86,17 +72,14 @@ class App extends Component {
   );
 
   render() {
-    const { isDesktop, logoutAction } = this.state;
+    const { logoutAction } = this.state;
     const { user } = this.props.auth;
     return (
       <React.Fragment>
         {!isEmpty(user) && (
           <Router history={history}>
             <div className="container">
-              {isDesktop && <SideBar user={user} logout={this.onLogoutCall} />}
-              {!isDesktop && (
-                <NavBar paths={paths} logout={this.onLogoutCall} />
-              )}
+              <NavBar user={user} paths={paths} logout={this.onLogoutCall} />
               <Route path="/" exact component={Main} />
               <Route path="/playlists" exact component={PlayLists} />
               <Route path="/edit/:id" exact component={Edit} />

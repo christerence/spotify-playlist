@@ -6,19 +6,19 @@ import { login } from "../../reducers/auth";
 class Login extends React.Component {
   render() {
     return (
-      <div className="login-container">
-        <div className="login-header">
+      <div className="Login">
+        <div className="Login-header">
           <p>Song Organizer</p>
         </div>
-        <div className="login-button">
-          <a href={"/auth/spotify"} className="login-spotify">
-            LOG IN TO SPOTIFY
+        <div className="Login-button">
+          <a href={"/auth/spotify"} className="Login-spotify">
+            login
           </a>
         </div>
 
-        <div className="login-footer">
-          <p><b>created by:</b> christerence (github)</p>
-          <p><b>last updated:</b> 12/21/19</p>
+        <div className="Login-footer">
+          <p><b>created by:</b> <a href="https://github.com/christerence">christerence</a> (<a href="https://github.com/christerence/spotify-playlist">@repo</a>)</p>
+          <p><b>last updated:</b> 08/19/20</p>
         </div>
       </div>
     );

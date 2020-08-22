@@ -1,154 +1,120 @@
-.main-container {
+@import "../../utilities/mixins.scss";
+@import "../../utilities//variables.scss";
+
+.Dashboard {
   height: 100%;
-  flex: 9;
   display: flex;
   flex-direction: column;
-}
 
-.dash-body {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: space-between;
-  text-align: center;
-}
-
-.user-playlists {
-  background: rgb(243, 243, 243);
-  padding: 10px;
-  overflow-y: scroll;
-  font-size: 16px;
-  border-radius: 5px;
-  width: 50%;
-  margin: 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-.user-trending {
-  background: rgb(243, 243, 243);
-  padding: 10px;
-  width: 50%;
-  margin: 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-.user-playlist {
-  flex: 1;
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  color: rgb(216, 216, 216);
-  border: solid 2px rgba(0, 0, 0, 0.2);
-}
-
-.user-playlist:hover {
-  border: solid 2px rgb(216, 216, 216);
-}
-
-.playlist-name {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: white;
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.playlist-sub-name {
-  text-align: center;
-  font-size: 2vmin;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.playlist-photo {
-  border-radius: 30vmin;
-  height: 8vmin;
-  width: 8vmin;
-  margin: 1vmin;
-  border: solid 2px white;
-}
-
-.user-time {
-  font-size: 3vmin;
-  width: 100%;
-  padding-right: 2vmin;
-  text-align: right;
-  color: white;
-}
-
-.dash-title {
-  width: 100%;
-  height: 7%;
-  padding-top: 15px;
-  padding-left: 10px;
-  font-size: 4vmin;
-  display: flex;
-  align-items: center;
-}
-
-.user-top-artists {
-  font-size: 2vmin;
-  text-align: center;
-  flex: 4;
-  overflow-y: scroll;
-  background-color: rgb(24, 24, 24);
-  border: solid 2px rgb(40, 40, 40);
-}
-
-.user-top-tracks {
-  font-size: 2vmin;
-  text-align: center;
-  flex: 4;
-  overflow-y: scroll;
-  background-color: rgb(24, 24, 24);
-  border: solid 2px rgb(40, 40, 40);
-}
-
-.top-title {
-  width: 100%;
-  text-align: left;
-  font-size: 16px;
-}
-
-
-@media only screen and (max-width: 600px) {
-  .dash-body {
-    flex-direction: column;
-    height: 90%;
-  }
-
-  .dash-title {
-    height: 4%;
-    padding-top: 5px;
-    padding-left: 5px;
-    font-size: 4vmin;
-  }
-
-  .user-playlists {
-    padding: 5px;
-    font-size: 3vmin;
-    height: 95%;
+  &-title {
+    padding: 16px 2px;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px $overlay;
+    margin: 1px;
     width: 100%;
-    margin: 4px;
-    margin-top: 0px;
+    color: $white;
+    text-align: center;
   }
 
-  .user-trending {
-    padding: 5px;
-    font-size: 3vmin;
-    height: 93.5%;
+  &-body {
     width: 100%;
-    margin: 4px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &-playlists {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+  }
+
+  &-playlist {
+    @include flex-center;
+    background: $black;
+    height: 500px;
+    margin: 1px;
+    width: calc(100% - 2px);
+    
+    @include sm {
+      width: calc(#{percentage(1/2)} - 2px);
+    }
+
+    @include lg {
+      width: calc(#{percentage(1/3)} - 2px);
+    }
+  }
+
+  &-playlistName {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    @include flex-center;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: $white;
+    background: $overlay;
+    transition: ease-in 0.2s;
+
+    &:hover {
+      background: $off-white;
+      color: $black;
+    }
+  }
+
+  &-trending {
+    width: 100%;
+  }
+
+  &-topArtists {
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  &-topArtist {
+    @include flex-center;
+    height: 500px;
+    background: $black;
+    color: $white;
+    margin: 1px;
+    width: calc(100% - 2px);
+    
+    @include sm {
+      width: calc(#{percentage(1/2)} - 2px);
+    }
+
+    @include lg {
+      width: calc(#{percentage(1/3)} - 2px);
+    }
+  }
+
+  &-topTracks {
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  &-topTrack {
+    @include flex-center;
+    height: 500px;
+    background: $black;
+    color: $white;
+    margin: 1px;
+    width: calc(100% - 2px);
+    
+    @include sm {
+      width: calc(#{percentage(1/2)} - 2px);
+    }
+
+    @include lg {
+      width: calc(#{percentage(1/3)} - 2px);
+    }
   }
 }
+
