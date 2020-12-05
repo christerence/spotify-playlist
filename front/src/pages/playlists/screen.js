@@ -9,25 +9,26 @@ import { Modal } from "../../components";
 class PlayLists extends React.Component {
   state = {
     showAlertDelete: false,
-    chosenPlaylist: null
+    chosenPlaylist: null,
   };
+
   componentDidMount() {
     if (this.props.spotify.playlists.length === 0) {
       this.props.fetchPlaylists();
     }
   }
 
-  onDelete = val => {
+  onDelete = (val) => {
     this.setState({
       showAlertDelete: true,
-      chosenPlaylist: val
+      chosenPlaylist: val,
     });
   };
 
   onDismiss = () => {
     this.setState({
       showAlertDelete: false,
-      chosenPlaylist: null
+      chosenPlaylist: null,
     });
   };
 
@@ -39,12 +40,12 @@ class PlayLists extends React.Component {
           const { chosenPlaylist } = this.state;
           this.props.deletePlaylist({
             playlist_id: chosenPlaylist.id,
-            current: this.props.spotify.playlists
+            current: this.props.spotify.playlists,
           });
 
           this.setState({
             showAlertDelete: false,
-            chosenPlaylist: null
+            chosenPlaylist: null,
           });
         }}
       >
@@ -56,24 +57,24 @@ class PlayLists extends React.Component {
     </React.Fragment>
   );
 
-  renderChoices = val => {
+  renderChoices = (val) => {
     return (
-      <div className="playlist-buttons">
-        <Link className="list-button" to={`/edit/${val.id}`}>
-          Edit
+      <React.Fragment>
+        <Link className="list-section option col4" to={`/edit/${val.id}`}>
+          edit
         </Link>
-        <div className="list-button" onClick={() => this.onDelete(val)}>
-          Delete
+        <div className="list-section option delete col5" onClick={() => this.onDelete(val)}>
+          delete
         </div>
-      </div>
+      </React.Fragment>
     );
   };
 
   renderLabel = () => (
-    <div className="playlist-buttons">
-      <div className="list-section">Edit?</div>
-      <div className="list-section">Delete?</div>
-    </div>
+    <React.Fragment>
+      <div className="list-section heading col4">Edit?</div>
+      <div className="list-section heading col5">Delete?</div>
+    </React.Fragment>
   );
 
   render() {
@@ -81,27 +82,21 @@ class PlayLists extends React.Component {
     const playlists = this.props.spotify.playlists;
     return (
       <React.Fragment>
-        <div className="main-container">
-          <div className="edit-header">
-            <div className="playlists-title">Playlists:</div>
-            {/* <div className="playlist-options">
-              <Link className="playlist-option" to={"/create"}>
-                create
-              </Link>
-            </div> */}
-          </div>
-          <div className="playlists-body">
+        <div className="Playlists">
+          <div className="Playlists-body">
             <ListItem
-              first={"PLAYLIST NAME"}
-              second={"OWNER"}
-              third={"NUMBER OF SONGS"}
+              first={"Name"}
+              second={"Owner"}
+              third={"Songs"}
               renderChoices={this.renderLabel}
+              modifier={"heading"}
             />
             {playlists &&
               playlists.map((val, key) => {
                 return (
                   <ListItem
                     key={key}
+                    images={val.images}
                     first={val.name}
                     second={val.owner.display_name}
                     third={val.tracks.total}
@@ -124,13 +119,13 @@ class PlayLists extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  spotify: state.spotify
+const mapStateToProps = (state) => ({
+  spotify: state.spotify,
 });
 
 const mapDispatchToProps = {
   deletePlaylist,
-  fetchPlaylists
+  fetchPlaylists,
 };
 
 export default connect(

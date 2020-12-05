@@ -12,43 +12,43 @@ class Create extends React.Component {
     description: "",
     privateBool: false,
     collaborativeBool: false,
-    showAlertCreate: false
+    showAlertCreate: false,
   };
 
-  changeName = e => {
+  changeName = (e) => {
     this.setState({
-      name: e.target.value
+      name: e.target.value,
     });
   };
 
-  changeDescription = e => {
+  changeDescription = (e) => {
     this.setState({
-      description: e.target.value
+      description: e.target.value,
     });
   };
 
-  changePrivate = e => {
+  changePrivate = (e) => {
     this.setState({
-      privateBool: !this.state.privateBool
+      privateBool: !this.state.privateBool,
     });
   };
 
-  changeCollaborative = e => {
+  changeCollaborative = (e) => {
     this.setState({
-      collaborativeBool: !this.state.collaborativeBool
+      collaborativeBool: !this.state.collaborativeBool,
     });
   };
 
   onDismiss = () => {
     this.setState({
-      showAlertCreate: false
+      showAlertCreate: false,
     });
   };
 
   onCreate = () => {
     if (this.state.name.length !== 0) {
       this.setState({
-        showAlertCreate: true
+        showAlertCreate: true,
       });
     }
   };
@@ -61,8 +61,8 @@ class Create extends React.Component {
           name: this.state.name,
           description: this.state.description,
           collaborative: this.state.collaborativeBool,
-          public: !this.state.privateBool
-        }
+          public: !this.state.privateBool,
+        },
       });
       history.push("/");
     }
@@ -75,7 +75,7 @@ class Create extends React.Component {
         onClick={() => {
           this.onSubmit();
           this.setState({
-            showAlertCreate: false
+            showAlertCreate: false,
           });
         }}
       >
@@ -93,95 +93,13 @@ class Create extends React.Component {
       description,
       privateBool,
       collaborativeBool,
-      showAlertCreate
+      showAlertCreate,
     } = this.state;
     const { generate } = this.props;
     return (
-      <React.Fragment>
-        <div className="create-container">
-          {/* <div className="create-body">
-            <div className="create-title">Create a PlayList:</div>
-            <div className="input-box">
-              <label>Name: </label>
-              <input
-                type="text"
-                className="name-input"
-                value={name}
-                onChange={this.changeName}
-              />
-            </div>
-            <div className="input-box">
-              <label>Description: </label>
-              <input
-                type="text"
-                className="desc-input"
-                value={description}
-                onChange={this.changeDescription}
-              />
-            </div>
-
-            <div className="input-row-box">
-              <div className="input-row-box">
-                <label className="label-toggles">Private</label>
-                <input
-                  type="checkbox"
-                  name="public"
-                  value={privateBool}
-                  onChange={this.changePrivate}
-                />
-              </div>
-
-              <div className="input-row-box">
-                {privateBool && (
-                  <React.Fragment>
-                    <label className="label-toggles">Collaborative</label>
-                    <input
-                      type="checkbox"
-                      name="public"
-                      value={collaborativeBool}
-                      onChange={this.changeCollaborative}
-                    />
-                  </React.Fragment>
-                )}
-              </div>
-            </div>
-
-            <div className="input-row-box">
-              <div className="create-options">
-                <div className="create-option" onClick={this.onCreate}>
-                  create
-                </div>
-              </div>
-
-              {/* <div className="create-options">
-              <Link className="create-option" to="/playlists">
-                cancel
-              </Link>
-            </div> 
-            </div>
-          </div> */}
-
-          <div className="create-gen">
-            {/* <div className="input-box">
-              <label>Name: </label>
-              <input
-                type="text"
-                className="name-input"
-                value={name}
-                placeholder="Playlist Name"
-                onChange={this.changeName}
-              />
-            </div>
-            <div className="input-box">
-              <label>Description: </label>
-              <input
-                type="text"
-                className="desc-input"
-                value={description}
-                placeholder="Description"
-                onChange={this.changeDescription}
-              />
-            </div> */}
+      <div className="Create">
+        <div className="Create-container">
+          <div className="Create-gen">
             <div className="gen-choices">
               {GenOptions.map((val, idx) => (
                 <div
@@ -206,18 +124,18 @@ class Create extends React.Component {
             onDismiss={this.onDismiss}
           />
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.auth.user
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
 });
 export default connect(
   mapStateToProps,
   {
     createPlaylist,
-    generate
+    generate,
   }
 )(Create);

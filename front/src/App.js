@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchUser } from "../src/reducers/auth";
 import { logoutCall } from "./reducers/auth";
 import "./App.scss";
-import { SideBar, NavBar, Modal } from "./components/";
+import { NavBar, Modal } from "./components/";
 import history from "./history";
 
 import Main from "./pages/main/screen";
@@ -21,16 +21,16 @@ function isEmpty(obj) {
 
 const paths = [
   { name: "Dashboard", link: "/" },
+  { name: "Playlists", link: "/playlists" },
   { name: "Create", link: "/create" },
-  { name: "PlayLists", link: "/playlists" },
-  { name: "Sign Out", logout: true }
+  { name: "Sign Out", logout: true },
 ];
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logoutAction: false
+      logoutAction: false,
     };
   }
 
@@ -42,13 +42,13 @@ class App extends Component {
 
   onDismiss = () => {
     this.setState({
-      logoutAction: false
+      logoutAction: false,
     });
   };
 
   onLogoutCall = () => {
     this.setState({
-      logoutAction: true
+      logoutAction: true,
     });
   };
 
@@ -58,7 +58,7 @@ class App extends Component {
         className="ui button negative"
         onClick={() => {
           this.setState({
-            logoutAction: false
+            logoutAction: false,
           });
           this.props.logoutCall();
         }}
@@ -103,14 +103,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(
   mapStateToProps,
   {
     fetchUser,
-    logoutCall
+    logoutCall,
   }
 )(App);

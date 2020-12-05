@@ -50,7 +50,7 @@ class Main extends Component {
               {stats.tracks.map((val, key) => {
                 return (
                   <div
-                    class="Dashboard-topArtist"
+                    className="Dashboard-topArtist"
                     key={key}
                     style={{
                       background: `url(${val.album.images[1].url}) center`

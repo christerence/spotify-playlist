@@ -12,14 +12,14 @@ passport.use(
     {
       clientID: keys.spotClient,
       clientSecret: keys.spotSecret,
-      callbackURL: "/auth/spotify/callback"
+      callbackURL: "/auth/spotify/callback",
     },
-    function(accessToken, refreshToken, expires_in, profile, done) {
-      User.findOne({ spotID: profile.id }).then(user => {
+    function (accessToken, refreshToken, expires_in, profile, done) {
+      User.findOne({ spotID: profile.id }).then((user) => {
         if (user) {
           user.token = accessToken;
           user.profilePhoto = profile.photos[0];
-          user.save().then(user => {
+          user.save().then((user) => {
             done(null, user);
           });
         } else {
@@ -27,10 +27,10 @@ passport.use(
             spotID: profile.username,
             token: accessToken,
             profileURL: profile.profileUrl,
-            profilePhoto: profile.photos[0]
+            profilePhoto: profile.photos[0],
           })
             .save()
-            .then(user => {
+            .then((user) => {
               done(null, user);
             });
         }

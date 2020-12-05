@@ -1,44 +1,71 @@
-.create-container {
-  background-color: white;
-  height: 100%;
-  flex: 9;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+@import "../../utilities/mixins.scss";
+@import "../../utilities//variables.scss";
 
-.create-body {
-  flex: 1;
-  width: 100%;
-  background: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+.Create {
+  @include container-default {
+    margin-top: 50px;
+  }
 
-.create-gen {
-  flex: 1;
-  height: 100%;
-  border-left: solid 1px white;
-  padding: 1vmin;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
+  &-container {
+    @include flex-center {
+      justify-content: space-between;
+    }
 
-.create-title {
-  width: 100%;
-  height: 7%;
-  padding-top: 15px;
-  padding-left: 10px;
-  font-size: 4vmin;
-  display: flex;
-  align-items: center;
+    background-color: $white;
+    height: 100%;
+  }
+
+  &-body {
+    @include flex-center {
+      flex-direction: column;
+    }
+
+    flex: 1;
+    width: 100%;
+    background: $black;
+  }
+
+  &-gen {
+    @include flex-center {
+      flex-direction: column;
+    }
+
+    flex: 1;
+    height: 100%;
+    border-left: 1px solid white;
+    padding: 1vmin;
+  }
+
+  &-title {
+    width: 100%;
+    height: 7%;
+    padding-top: 15px;
+    padding-left: 10px;
+    font-size: 4vmin;
+    display: flex;
+    align-items: center;
+  }
+
+  &-options {
+    padding: 1vmin;
+    display: flex;
+    flex-direction: row;
+    font-size: 2vmin;
+    justify-content: space-between;
+  }
+
+  &-option {
+    @include flex-center;
+
+    flex: 1;
+    padding: 1.5vmin;
+    border: solid 1px $white;
+    color: $white;
+  }
 }
 
 .input-box {
-  margin: 10px;
+  margin: 8px;
   height: 10%;
   width: 50%;
   font-size: 2vmin;
@@ -49,18 +76,16 @@
 }
 
 .input-box label {
-  color: black;
+  color: $black;
 }
 
 .name-input {
   border-radius: 0.5vmin;
-  font-family: "Space Mono", monospace;
 }
 
 .desc-input {
   border-radius: 0.5vmin;
-  font-family: "Space Mono", monospace;
-  color: black;
+  color: $black;
 }
 
 .input-row-box {
@@ -73,99 +98,27 @@
 }
 
 .label-toggles {
-  color: white;
+  color: $white;
   font-size: 1.5vmin;
   margin-right: 2vmin;
 }
 
-.create-options {
-  padding: 1vmin;
-  display: flex;
-  flex-direction: row;
-  font-size: 2vmin;
-  justify-content: space-between;
-}
-
-.create-option {
-  flex: 1;
-  display: flex;
-  padding: 1.5vmin;
-  border: solid 1px white;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5vmin;
-  transition: background 0.5s ease, color 0.5s ease;
-}
-
-.create-option:hover {
-  background: white;
-  color: black;
-}
-
 .gen-choices {
-  height: 100%;
-  width: 80%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: row;
+  @include container-default;
 }
 
 .gen-choice {
-  margin: 10px;
-  border-radius: 100%;
+  @include flex-center;
+
+  cursor: pointer;
   height: 200px;
-  width: 200px;
-  font-size: 16px;
-  padding: 5px;
-  background: black;
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
-  color: rgb(216, 216, 216);
-  border-top: solid 1px rgb(40, 40, 40);
-  border-bottom: solid 1px rgb(40, 40, 40);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background 0.5s ease;
-}
-
-.gen-choice:hover {
-  background: #fffe;
-  color: black;
-  border: solid 1px black;
-}
-
-@media only screen and (max-width: 600px) {
-  .gen-choices {
-    height: 100%;
-    width: 80%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .create-title {
-    font-size: 24px;
-  }
-
-  .create-container {
-    flex-direction: column;
-  }
-
-  .create-gen {
-    border-top: solid 1px white;
-    border-left: solid 0px white;
-  }
-
-  .input-box {
-    height: 5%;
-    width: 80%;
-    font-size: 3vmin;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+  color: $black;
+  text-decoration: underline;
+  text-decoration-color: $brand-green;
+  
+  padding: 8px;
+  margin: 8px;
 }

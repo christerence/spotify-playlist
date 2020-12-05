@@ -1,46 +1,48 @@
-@import '../../utilities/mixins.scss';
-@import '../../utilities//variables.scss';
+@import "../../utilities/mixins.scss";
+@import "../../utilities//variables.scss";
 
 .Login {
-  flex: 1;
-  height: 100%;
-  background: $white;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 5fr 4fr 1fr;
-  grid-template-areas:
-    "header header header"
-    "button button button"
-    "footer footer footer";
+  @include container-default {
+    background: $white;
 
-  &-header {
-    grid-area: header;
-    @include flex-center;
-    align-items: flex-end;
-
-    p {
-      text-shadow: 2px 2px $brand-green;
-      color: $black;
-      font-size: 52px;
-      letter-spacing: 5px;
-      margin: 20px;
-      font-weight: bold;
-
-      @include md {
-        font-size: 64px;
-      }
+    @include flex-center {
+      flex-direction: column;
     }
   }
 
+  &-header {
+    @include flex-center {
+      align-items: flex-end;
+    }
+
+    flex: 1;
+
+    font-size: 32px;
+    color: $black;
+    letter-spacing: 5px;
+    font-weight: bold;
+
+    margin: 16px;
+
+    @include sm {
+      font-size: 64px;
+    }
+  }
+
+  &-body {
+    flex: 1;
+  }
+
   &-button {
-    grid-area: button;
-    @include flex-center;
-    align-items: flex-start;
+    @include flex-center {
+      align-items: flex-start;
+    }
   }
 
   &-spotify {
     @include flex-center;
-    width: 250px;
+
+    width: 150px;
     background: $brand-green;
     border: solid 1px $brand-green;
     color: $white;
@@ -48,31 +50,37 @@
     font-weight: bold;
     letter-spacing: 2px;
     margin: 5px;
-    padding: 15px;
+    padding: 16px;
     border-radius: 200px;
     text-transform: uppercase;
     transition: ease-in 0.2s;
-    box-shadow: 0 3px $black;
 
     &:hover {
-      box-shadow: 0 3px $brand-green;
       border: solid 1px $brand-green;
       color: $brand-green;
       background: $white;
     }
 
     &:active {
-      box-shadow: 0 1px $black;
       border: solid 1px $brand-green;
       background: $brand-green;
       color: $white;
     }
+
+    @include md
+    {
+      width: 250px;
+    }
   }
 
   &-footer {
-    @include flex-center;
-    flex-direction: column;
-    grid-area: footer;
-    p { margin: 0; }
+    @include flex-center
+    {
+      flex-direction: column;
+    }
+
+    p {
+      margin: 0;
+    }
   }
 }

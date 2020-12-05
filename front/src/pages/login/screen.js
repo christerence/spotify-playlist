@@ -7,30 +7,38 @@ class Login extends React.Component {
   render() {
     return (
       <div className="Login">
-        <div className="Login-header">
-          <p>Song Organizer</p>
-        </div>
-        <div className="Login-button">
-          <a href={"/auth/spotify"} className="Login-spotify">
+        <h1 className="Login-header">Song Organizer</h1>
+        <div className="Login-body">
+          <a href={"/auth/spotify"} className="Login-button Login-spotify">
             login
           </a>
         </div>
-
         <div className="Login-footer">
-          <p><b>created by:</b> <a href="https://github.com/christerence">christerence</a> (<a href="https://github.com/christerence/spotify-playlist">@repo</a>)</p>
-          <p><b>last updated:</b> 08/19/20</p>
+          <p>
+            <b>created by:</b>
+            <a href="https://github.com/christerence">christerence</a>
+            <a href="https://github.com/christerence/spotify-playlist">
+              (@repo)
+            </a>
+          </p>
+          <p>
+            <b>last updated:</b> 08/19/20
+          </p>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 const mapDispatchToProps = {
-  login
+  login,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

@@ -1,102 +1,143 @@
-.edit-header {
-  flex: 1;
-  font-size: 5vmin;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+@import "../../utilities/mixins.scss";
+@import "../../utilities//variables.scss";
+
+.Edit
+{
+  @include container-default
+  {
+    margin-top: 50px;
+  }
+
+  &-header {
+    @include flex-center
+    {
+      justify-content: flex-start;
+    }
+
+    flex: 1;
+    height: 40px;
+  }
+
+  &-imgWrapper
+  {
+    height: 40px;
+    width: 40px;
+    margin-right: 16px;
+    background: $brand-green;
+    box-shadow: 3px 2px 0px -1px rgba(0, 0, 0, 0.29);
+  }
+
+  &-img
+  {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &-title {
+    @include flex-center{
+      justify-content: flex-start;
+    }
+
+    flex: 2;
+    font-size: 18px;
+    height: 100%;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: $brand-green;
+
+    @include sm
+    {
+      font-size: 24px;
+    }
+  }
+
+  &-options {
+    @include flex-center
+    {
+      justify-content: space-between;
+    }
+
+    flex: 1;
+    height: 100%;
+    font-size: 2vmin;
+  }
+
+  &-option {
+    @include flex-center;
+
+    flex: 1;
+    height: 100%;
+    padding: 0 8px;
+    color: $black;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background: $brand-green;
+      color: $white;
+      border-radius: 2px;
+    }
+  }
+
+  &-delete {
+    flex: 1;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  &-body {
+    width: 100%;
+    font-size: 3vmin;
+    overflow-y: scroll
+  }
 }
 
-.edit-title {
-  flex: 8;
-  font-size: 4vmin;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.Recommended
+{
+  &-body {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-title {
+    flex: 1;
+    width: 100%;
+    font-size: 2vmin;
+    padding: 1vmin;
+    display: flex;
+    align-items: center;
+  }
+
+  &-songList {
+    flex: 39;
+    padding: 2px;
+    background: rgb(24, 24, 24);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-savedTracks {
+    flex: 1;
+    width: 100%;
+    height: 50%;
+  }
 }
 
-.edit-options {
-  flex: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  font-size: 2vmin;
-  justify-content: space-between;
-}
-
-.edit-option {
-  flex: 1;
-  display: flex;
-  margin: 5px;
-  justify-content: center;
-  align-items: center;
-}
-
-.edit-option:hover {
-  background: white;
-  color: black;
-}
-
-.edit-delete {
-  flex: 1;
-}
-
-.playlist-body-whole {
-  flex: 8;
-  display: flex;
-  flex-direction: row;
-}
-
-.recommended-body {
-  flex: 8;
-  display: flex;
-  flex-direction: column;
-}
-
-.recommended-title {
-  flex: 1;
-  width: 100%;
-  font-size: 2vmin;
-  padding: 1vmin;
-  display: flex;
-  align-items: center;
-}
-
-.recommended-song-list {
-  flex: 39;
-  padding: 2px;
-  background: rgb(24, 24, 24);
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-}
-
-.saved-tracks {
-  flex: 1;
-  width: 100%;
-  height: 50%;
-}
-
-.edit-body {
-  flex: 9;
-  width: 100%;
-  font-size: 3vmin;
-  background-color: rgb(24, 24, 24);
-  border: solid 2px #1b1b1b;
-  overflow-y: scroll
-}
 
 .graph-body {
+  @include flex-center;
+
   flex: 9;
   width: 100%;
   margin-bottom: 2vmin;
   font-size: 3vmin;
-  background-color: rgb(24, 24, 24);
-  border: solid 2px #1b1b1b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
